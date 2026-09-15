@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizza Mario</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --or:rgb(215,160,57);
+  --or-dark:rgb(180,120,30);
+  --or-pale:#FFF8F0;
+  --or-mid:#FDE8B8;
+  --marron:#5D2E0C;
+  --marron-mid:#8B5020;
+  --rouge:#C0392B;
+  --bleu:rgb(32,32,115);
+  --blanc:#ffffff;
+  --fond:#FFF8F0;
+  --card-bg:#FFFDF7;
+  --bord:rgba(215,160,57,0.35);
+}
+body{background:var(--fond);color:var(--marron);font-family:'Nunito',sans-serif;font-size:16px;line-height:1.6}
+
+/* NAV */
+nav{
+  background:var(--or);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 40px;
+  border-bottom:4px solid var(--or-dark);
+  position:sticky;top:0;z-index:100;
+}
+.nav-logo{
+  font-family:'Fredoka One',cursive;
+  font-size:22px;color:#fff;letter-spacing:1px;
+  text-shadow:2px 2px 0 rgba(0,0,0,0.15);
+  padding:12px 0;
+}
+.nav-links{display:flex;gap:6px}
+.nav-links a{
+  color:rgba(255,255,255,0.9);text-decoration:none;
+  font-size:14px;font-weight:700;letter-spacing:0.5px;
+  padding:8px 16px;border-radius:20px;
+  transition:background 0.2s,color 0.2s;
+}
+.nav-links a:hover{background:rgba(255,255,255,0.25);color:#fff}
+
+/* HERO */
+.hero{
+  background:var(--or);
+  padding:56px 48px 0;
+  display:flex;align-items:flex-end;gap:32px;
+  border-bottom:4px solid var(--or-dark);
+  overflow:hidden;
+}
+.hero-text{flex:1;padding-bottom:48px}
+.hero-badge{
+  display:inline-block;
+  background:var(--rouge);color:#fff;
+  font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  padding:5px 14px;border-radius:20px;margin-bottom:14px;
+}
+.hero-text h1{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(40px,7vw,72px);
+  color:#fff;
+  line-height:1.05;
+  text-shadow:3px 3px 0 rgba(0,0,0,0.12);
+  margin-bottom:12px;
+}
+.hero-text p{
+  font-size:16px;color:rgba(255,255,255,0.88);
+  font-weight:600;margin-bottom:28px;
+}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{
+  background:var(--rouge);color:#fff;
+  font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;
+  padding:13px 28px;border-radius:50px;border:none;cursor:pointer;
+  text-decoration:none;display:inline-block;
+  box-shadow:0 4px 0 rgba(0,0,0,0.2);
+  transition:transform 0.15s,box-shadow 0.15s;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(0,0,0,0.2)}
+.btn-primary:active{transform:translateY(1px);box-shadow:0 2px 0 rgba(0,0,0,0.2)}
+.btn-secondary{
+  background:rgba(255,255,255,0.2);color:#fff;
+  font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;
+  padding:13px 28px;border-radius:50px;border:2px solid rgba(255,255,255,0.5);cursor:pointer;
+  text-decoration:none;display:inline-block;
+  transition:background 0.2s;
+}
+.btn-secondary:hover{background:rgba(255,255,255,0.3)}
+.hero-img{
+  width:200px;height:200px;border-radius:50%;
+  border:5px solid rgba(255,255,255,0.5);
+  object-fit:cover;flex-shrink:0;margin-bottom:0;
+  box-shadow:0 8px 0 rgba(0,0,0,0.12);
+
+}
+.hero {
+  display: flex;
+  align-items: flex-end;
+  gap: 32px;
+  
+}
+
+/* DIVIDER WAVY */
+.wave-divider{
+  background:var(--or);
+  line-height:0;
+}
+.wave-divider svg{display:block;width:100%}
+
+/* TAGLINE STRIP */
+.tagline-strip{
+  background:var(--marron);
+  padding:14px 0;
+  overflow:hidden;
+}
+.tagline-inner{
+  display:flex;gap:40px;justify-content:center;flex-wrap:wrap;
+  padding:0 40px;
+}
+.tagline-item{
+  color:rgba(255,255,255,0.85);font-size:13px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;
+}
+.tagline-dot{width:6px;height:6px;background:var(--or);border-radius:50%}
+
+/* MENU */
+#menu-section{padding:64px 40px;background:var(--fond)}
+.section-head{text-align:center;margin-bottom:44px}
+.section-tag{
+  display:inline-block;
+  background:var(--or-mid);color:var(--marron-mid);
+  font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 16px;border-radius:20px;margin-bottom:12px;
+  border:1.5px solid var(--bord);
+}
+.section-head h2{
+  font-family:'Fredoka One',cursive;
+  font-size:clamp(30px,5vw,48px);
+  color:var(--marron);
+  margin-bottom:6px;
+}
+.section-head p{font-size:15px;color:var(--marron-mid);font-weight:600}
+
+.menu-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;max-width:900px;margin:0 auto;
+}
+.pizza-card{
+  background:var(--card-bg);
+  border-radius:20px;
+  border:2px solid var(--bord);
+  padding:28px 22px 22px;
+  transition:transform 0.22s,border-color 0.22s,box-shadow 0.22s;
+  position:relative;overflow:hidden;
+}
+.pizza-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:5px;
+  background:var(--or);border-radius:20px 20px 0 0;
+}
+.pizza-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--or);
+  box-shadow:0 12px 32px rgba(215,160,57,0.2);
+}
+.pizza-card h3{
+  font-family:'Fredoka One',cursive;
+  font-size:22px;color:var(--marron);margin-bottom:8px;margin-top:4px;
+}
+.pizza-card p{font-size:13.5px;color:var(--marron-mid);line-height:1.55;margin-bottom:18px;font-weight:600}
+.pizza-footer{display:flex;align-items:center;justify-content:space-between}
+.pizza-price{
+  font-family:'Fredoka One',cursive;
+  font-size:20px;color:var(--or-dark);
+}
+.pizza-tag{
+  font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+  background:var(--or-mid);color:var(--marron-mid);
+  padding:3px 10px;border-radius:20px;
+  border:1px solid var(--bord);
+}
+
+/* ORDER */
+#formuler{
+  padding:64px 40px;
+  background:var(--or);
+  border-top:4px solid var(--or-dark);
+  border-bottom:4px solid var(--or-dark);
+}
+#formuler .section-head h2{color:#fff}
+#formuler .section-head p{color:rgba(255,255,255,0.85)}
+#formuler .section-tag{background:rgba(255,255,255,0.2);color:#fff;border-color:rgba(255,255,255,0.3)}
+
+.form-card{
+  background:var(--fond);
+  border-radius:20px;border:2px solid rgba(255,255,255,0.5);
+  padding:36px;max-width:540px;margin:0 auto;
+}
+.form-grid{display:flex;flex-direction:column;gap:16px}
+label{font-size:13px;font-weight:800;color:var(--marron);letter-spacing:0.3px;display:block;margin-bottom:5px}
+input,select,textarea{
+  width:100%;padding:11px 14px;font-size:15px;
+  font-family:'Nunito',sans-serif;font-weight:600;
+  border:2px solid var(--bord);border-radius:12px;
+  background:#fff;color:var(--marron);outline:none;
+  transition:border-color 0.2s;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--or)}
+textarea{height:100px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.btn-order{
+  width:100%;padding:15px;
+  background:var(--or);color:#fff;
+  font-family:'Fredoka One',cursive;font-size:18px;letter-spacing:0.5px;
+  border:none;border-radius:50px;cursor:pointer;
+  box-shadow:0 4px 0 rgba(0,0,0,0.25);
+  transition:transform 0.15s,box-shadow 0.15s;
+  margin-top:4px;
+}
+.btn-order:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(0,0,0,0.25)}
+.btn-order:active{transform:translateY(1px);box-shadow:0 2px 0 rgba(0,0,0,0.25)}
+
+/* FOOTER */
+footer{
+  background:var(--marron);padding:48px 40px;text-align:center;
+}
+footer h2{
+  font-family:'Fredoka One',cursive;font-size:28px;
+  color:var(--or);margin-bottom:20px;
+}
+.contact-items{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 28px;margin-bottom:28px}
+.contact-items p{font-size:14px;color:rgba(255,255,255,0.7);font-weight:600}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.3);font-weight:600}
+
+@media(max-width:600px){
+  nav{padding:0 16px}
+  .hero{flex-direction:column;padding:36px 20px 0;align-items:center;text-align:center}
+  .hero-btns{justify-content:center}
+  .hero-img{width:140px;height:140px}
+  #menu-section,#formuler{padding:48px 20px}
+  footer{padding:36px 20px}
+  .form-card{padding:22px 16px}
+  .form-row{grid-template-columns:1fr}
+  .nav-links a{padding:8px 10px;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">🍕 Pizza Mario</div>
+  <div class="nav-links">
+    <a href="#menu-section">Menu</a>
+    <a href="#formuler">Commander</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Livraison en 30 min !</div>
+    <h1>Pizza Mario</h1>
+    <p>La meilleure pizza de la ville, préparée avec amour.</p>
+    <div class="hero-btns">
+      <a href="#formuler" class="btn-primary">Commander maintenant</a>
+      <a href="#menu-section" class="btn-secondary">Voir le menu</a>
+    </div>
+  </div>
+  <img id="logo" class="hero-img" src="https://upload.wikimedia.org/wikipedia/en/9/93/Good_Pizza%2C_Great_Pizza_cover.png" alt="Logo Pizza Mario">
+</div>
+
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="40">
+    <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#FFF8F0"/>
+  </svg>
+</div>
+
+<div class="tagline-strip">
+  <div class="tagline-inner">
+    <span class="tagline-item"><span class="tagline-dot"></span>Ingrédients frais</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>Four à bois</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>Livraison rapide</span>
+    <span class="tagline-item"><span class="tagline-dot"></span>Fait maison</span>
+  </div>
+</div>
+
+<section id="menu-section">
+  <div class="section-head">
+    <div class="section-tag">Nos spécialités</div>
+    <h2>Notre Menu</h2>
+    <p>Des pizzas préparées avec des ingrédients frais, livrées chez vous</p>
+  </div>
+  <div class="menu-grid">
+    <div class="pizza-card">
+      <h3>Margherita</h3>
+      <p>Tomate fraîche, mozzarella fondante et basilic frais.</p>
+      <div class="pizza-footer">
+        <span class="pizza-price">45 DH</span>
+        <span class="pizza-tag">Classique</span>
+      </div>
+    </div>
+    <div class="pizza-card">
+      <h3>4 Fromages</h3>
+      <p>Mozzarella, cheddar, parmesan et chèvre fondus ensemble.</p>
+      <div class="pizza-footer">
+        <span class="pizza-price">60 DH</span>
+        <span class="pizza-tag">Populaire</span>
+      </div>
+    </div>
+    <div class="pizza-card">
+      <h3>Poulet BBQ</h3>
+      <p>Poulet grillé, sauce BBQ maison et oignons caramélisés.</p>
+      <div class="pizza-footer">
+        <span class="pizza-price">65 DH</span>
+        <span class="pizza-tag">Chef's pick</span>
+      </div>
+    </div>
+    <div class="pizza-card">
+      <h3>Végétarienne</h3>
+      <p>Poivrons colorés, champignons, olives noires et tomate fraîche.</p>
+      <div class="pizza-footer">
+        <span class="pizza-price">55 DH</span>
+        <span class="pizza-tag">Légère</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="formuler">
+  <div class="section-head">
+    <div class="section-tag">Commande en ligne</div>
+    <h2>Passer une commande</h2>
+    <p>Remplissez le formulaire, on s'occupe du reste !</p>
+  </div>
+  <div class="form-card">
+    <div class="form-grid">
+      <div>
+        <label for="nom">Votre nom</label>
+        <input type="text" id="nom" placeholder="Ex. Yassine Benali" required>
+      </div>
+      <div>
+        <label for="adresse">Adresse de livraison</label>
+        <input type="text" id="adresse" placeholder="Ex. Rue Ibn Battouta, Tanger" required>
+      </div>
+      <div>
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" placeholder="0600000000" required pattern="[0-9]{10}">
+      </div>
+      <div class="form-row">
+        <div>
+          <label for="pizza">Pizza</label>
+          <select id="pizza">
+            <option value="margherita">Margherita — 45 DH</option>
+            <option value="4fromages">4 Fromages — 60 DH</option>
+            <option value="pouletbbq">Poulet BBQ — 65 DH</option>
+            <option value="vegetarienne">Végétarienne — 55 DH</option>
+          </select>
+        </div>
+        <div>
+          <label for="quantite">Quantité</label>
+          <input type="number" id="quantite" min="1" max="10" value="1">
+        </div>
+      </div>
+      <div>
+        <label for="note">Note spéciale (optionnel)</label>
+        <textarea id="note" placeholder="Ex. Sans oignons, cuisson bien dorée..."></textarea>
+      </div>
+      <button class="btn-order" type="button" onclick="alert('Commande reçue ! Nous vous contactons sous peu.')">
+        Commander maintenant !
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <section id="contact">
+    <h2>Contactez-nous</h2>
+    <div class="contact-items">
+      <p>📍 23 Avenue Mohammed V, Casablanca</p>
+      <p>📞 05 22 00 00 00</p>
+      <p>📧 contact@pizzamario.ma</p>
+      <p>🕐 Ouvert tous les jours · 11h–23h</p>
+    </div>
+    <p class="footer-copy">© 2025 Pizza Mario — Tous droits réservés</p>
+  </section>
+</footer>
+
+</body>
+</html>
